@@ -81,3 +81,30 @@ elements of the input matrix in a counterclockwise spiral, starting from the top
 
 
 In the created library, I decided to split the work with matrices into 3 entities. The functionality of the library is simple and includes checking that the input was a matrix, performing operations with the matrix, and getting a matrix object.
+
+## Usage
+
+
+### Requirements
+```sh
+git clone https://github.com/practicesavedtheworld/Wake_up_Neo..git
+```
+```sh
+pip install requirements.txt dev-requirements.txt
+```
+
+### Run tests
+```sh
+cd Wake_up_Neo
+```
+```sh
+pytest tests/ -v
+```
+
+### Using without installation
+
+Works as a standart import
+
+![matr import demo](https://github.com/practicesavedtheworld/Wake_up_Neo./assets/105741091/d38fbfbb-9a66-439f-a9bf-0c8de7c50bb8)
+
+

@@ -20,30 +20,67 @@ class Matrix2D:
 
     @staticmethod
     def is_2d_matrix(matrix: Any, inner_type: INNER_MATRIX_ELEM_TYPE = int) -> None:
-        """Check is the given matrix is 2D matrix, if it's true check inner matrix type"""
+        """Check is the given matrix is 2D matrix, if it's true check inner matrix
+        type"""
 
-        t.List(t.List(t.Int)).check(matrix)
+        t.List(t.List(inner_type)).check(matrix)
         for row in matrix:
-            assert all(
-                map(
-                    lambda digit: isinstance(digit, inner_type),
-                    row,
+            assert (
+                all(
+                    map(
+                        lambda digit: isinstance(digit, inner_type),
+                        row,
+                    )
                 )
-            ) is True
+                is True
+            )
 
-    def counter_clockwise_matrix(self) -> MATRIX:
-        """ """
-        # TODO add descriptions
+
+class MatrixView(Matrix2D):
+    @property
+    def matrix_object_view(self):
+        """Return matrix object that we can work with"""
+
+        return self.matrix
+
+    def __str__(self):
+        """
+        Return classic matrix view. For e.g.:
+        1 | 2 | 34
+        5 | 6 | 21
+        4 | 2 | 3
+        """
+
+        classic = "\n".join(
+            [" | ".join(map(str, row)) for row in self.matrix_object_view]
+        )
+        return classic
+
+
+class Matrix2DOperations(Matrix2D):
+    def counter_clockwise_matrix(self, direction: int = 1) -> MatrixView:
+        """Passes through given matrix onto counterclockwise direction and
+        saved passed element. In the end return new matrix had got
+        by spiral movement.
+
+        It begins from top left corner and move into ↓ direction
+        Direction value:
+         ← direction = 0
+         ↓ direction = 1
+         → direction = 2
+         ↑ direction = 3
+        Moves will be continued until matrix has not ended.
+        """
 
         if len(self.matrix) == 1:
-            return self.matrix
+            return MatrixView(self.matrix)
 
         result = []
         top = 0
         bottom = len(self.matrix) - 1
         left = 0
         right = len(self.matrix[0]) - 1
-        direction = 1
+        direction = direction
 
         while top <= bottom and left <= right:
             if direction == 0:
@@ -65,6 +102,10 @@ class Matrix2D:
 
             direction = (direction + 1) % 4
 
-        # TODO need return the matrix view object
+        for el in range(len(self.matrix)):
+            row_len = len(self.matrix[0])
+            result.append(result[:row_len])
+            del result[:row_len]
 
-        return result
+        self.matrix = result
+        return MatrixView(self.matrix)

@@ -36,7 +36,7 @@
 5  6  3
 
 
-Таким образом, задача заключается в написании библиотеки, содержащей функцию "transform", которая будет выполнять обход
+Таким образом, задача заключается в написании библиотеки, содержащей функцию "counter_clockwise_matrix", которая будет выполнять обход
 элементов входной матрицы по спирали против часовой стрелки, начиная с верхнего левого угла, и возвращать новую матрицу с элементами в заданном порядке.
  </details>
 
@@ -73,7 +73,7 @@ Then the result of the "counter_clockwise_matrix" function will be a new matrix:
 5 6 3
 
 
-So the challenge is to write a library containing a "transform" function that will traverse
+So the challenge is to write a library containing a "counter_clockwise_matrix" function that will traverse
 elements of the input matrix in a counterclockwise spiral, starting from the top left corner, and return a new matrix with elements in the given order.
 </details>
 

@@ -1,6 +1,10 @@
 import pytest
 
-from Wake_up_Neo.wake_up_neo_lib.matrix_op import Matrix2D, Matrix2DOperations
+from Wake_up_Neo.wake_up_neo_lib.matrix_op import (
+    Matrix2D,
+    Matrix2DOperations,
+    MatrixView,
+)
 
 
 class TestMatrix2D:
@@ -48,3 +52,10 @@ class TestMatrix2DOperations:
             [1, 5, 6, 7],
             [8, 4, 3, 2],
         ]
+
+
+class TestMatrixView:
+    def test_dunderstr(self, correct_matrix):
+        assert str(MatrixView(correct_matrix)) == "\n".join(
+            ["1 | 2 | 3 | 4", "5 | 6 | 7 | 8"]
+        )
